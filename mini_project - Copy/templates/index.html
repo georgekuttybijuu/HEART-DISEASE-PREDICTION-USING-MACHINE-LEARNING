@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+	
+		<style>
+			body {
+				background-image: url('/static/heart1.jpg');
+				background-size: cover;
+			}
+	
+			center {
+				margin-top: 50px;
+			}
+	
+			table {
+				background-color: rgba(255, 255, 255, 0.8);
+				padding: 20px;
+				border-radius: 10px;
+			}
+	
+			h1 {
+				color: #ffffff;
+			}
+	
+			a {
+				display: block;
+				margin-top: 20px;
+				color: #333;
+				text-align: center;
+			}
+			.prediction-text {
+            color: rgb(255, 255, 255); /* Change 'red' to your desired text color */
+			font-weight: 700;
+		}
+		</style>
+	</head>
+    <body bgcolor="white">
+        <center>
+    <h1>
+        <b>Heart disease prediction from vitals</b>
+    </h1>
+	<table>
+		<form  action="{{ url_for('predict')}}" method="post">
+ 	<tr><td><br>Age :<br> <input type="text" name="age"></td></tr>
+	<tr><td><br>Sex : <br><label><input type="radio" name="gender" value="1">Male
+							  <input type="radio" name="g
+							  ender" value="0"> Female
+			</td></tr>													
+	<tr><td><br>Chest pain type:
+			<br><select name="cp">
+				<option value="0">Typical angina</option>
+				<option value="1">Atypical angina</option>
+				<option value="2">Non-anginal pain</option>
+				<option value="3">Asymptomatic</option>
+			  </select></td></tr>
+    <tr><td><br>Resting blood pressure<br><input type="text" name="rbps"></td></tr>
+	<tr><td><br>Serum cholesterol in mg/dl<br><input type="text" name="chol"></td></tr>
+	<tr><td><br>Fasting blood sugar (if fbs > 120 mg/dl)<br><select name="fbp">
+								<option value="1">Yes</option>
+								<option value="0">No</option>
+							</select></td></tr>
+	<tr><td><br>Resting ECG result<br><select name="recg">
+										<option value="1">Normal</option>
+										<option value="0">Abnormal</option>
+									</select></td></tr>
+	<tr><td><br>Maximum heart rate achieved<br><input type="text" name="thalach"></td></tr>
+	<tr><td><br>Exercise induced angina<br><select name="eia">
+								<option value="1">Yes</option>
+								<option value="0">No</option>
+							</select></td></tr>
+	<tr><td><br>ST depression induced by Exercise<br><input type="text" name="oldpeak"></td></tr>
+	<tr><td><br>Slope of peak Exercise ST segment <br><select name="spsts">
+										<option value="0">Up sloping</option>
+										<option value="1">Flat value</option>
+										<option value="2">Down sloping</option>
+									</select></td></tr>
+	<tr><td><br>No. of major vessels colored by fluroscopy<br><select name="mvcf">
+										<option >0</option>
+										<option >1</option>
+										<option >2</option>
+										<option >3</option>
+										<option >4</option>
+									</select></td></tr>
+	<tr><td><br>Maximum heart rate achieved <br><select name="mhra">
+										<option value="0">Normal</option>
+										<option value="1">Fixed defect</option>
+										<option value="2">Reveresible defect</option>
+									</select></td></tr>
+<br>				<tr><td><label>
+						<br><input type="submit" name="submit" value="Predict" >
+					</label></td></tr>
+					</form>
+					<!-- {{ prediction_text }} -->
+					<p class="prediction-text">{{ prediction_text }}</p>
+				</table>			
+		</center>	
+		<!--<a href="{{url_for('logout')}}">Logout</a>-->
+		<a href="{{url_for('logout')}}" class="btn btn-secondary">Logout</a>
+    </body>
+</html>
